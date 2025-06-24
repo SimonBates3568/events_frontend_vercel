@@ -152,7 +152,7 @@ export const EventsPage = () => {
       const token = localStorage.getItem('token');
 
       if (isEdit) {
-        response = await fetch(`${process.env.NEXT_PUBLIC_URL}/events/${currentEventId}`, {
+        response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events/${currentEventId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -175,7 +175,7 @@ export const EventsPage = () => {
           isClosable: true,
         });
       } else {
-        response = await fetch(`${process.env.NEXT_PUBLIC_URL}/events`, {
+        response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
