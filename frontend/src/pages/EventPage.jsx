@@ -63,7 +63,7 @@ export const EventPage = () => {
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_APPI_URL}/categories`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
         if (!response.ok) {
           throw new Error('Failed to fetch categories');
         }
