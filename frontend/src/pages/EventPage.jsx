@@ -27,7 +27,7 @@ export const EventPage = () => {
     console.log('Event ID:', eventId); // Debugging
     async function fetchEvent() {
       try {
-        const response = await fetch(`https://events-api-postgresql.onrender.com/events/${eventId}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/events/${eventId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch event');
         }
@@ -63,7 +63,7 @@ export const EventPage = () => {
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const response = await fetch('https://events-api-postgresql.onrender.com/categories');
+        const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/categories`);
         if (!response.ok) {
           throw new Error('Failed to fetch categories');
         }
@@ -100,7 +100,7 @@ export const EventPage = () => {
         endTime: new Date(formData.endTime).toISOString(),
         categoryIds: [Number(formData.categoryId)],
       };
-      const response = await fetch(`https://events-api-postgresql.onrender.com/events/${eventId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/events/${eventId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -111,7 +111,7 @@ export const EventPage = () => {
         throw new Error('Failed to update event');
       }
       // Fetch the updated event from backend
-      const updatedEventRes = await fetch(`https://events-api-postgresql.onrender.com/events/${eventId}`);
+      const updatedEventRes = await fetch(`${process.env.NEXT_PUBLIC_URL}/events/${eventId}`);
       const updatedEvent = await updatedEventRes.json();
       setEvent(updatedEvent);
       setFormData({
@@ -153,7 +153,7 @@ export const EventPage = () => {
       if (!token) {
         throw new Error('No authentication token found');
       }
-      const response = await fetch(`https://events-api-postgresql.onrender.com/events/${eventId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/events/${eventId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
