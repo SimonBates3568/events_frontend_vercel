@@ -37,7 +37,7 @@ export const EventsPage = () => {
     async function fetchData() {
       try {
         // Fetch categories
-        const categoriesResponse = await fetch(`${process.env.NEXT_PUBLIC_URL}/categories`);
+        const categoriesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
         if (!categoriesResponse.ok) {
           throw new Error(`Failed to fetch categories: ${categoriesResponse.statusText}`);
         }
@@ -56,7 +56,7 @@ export const EventsPage = () => {
         }
 
         // Fetch events
-        const eventsResponse = await fetch('events');
+        const eventsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events`);
         if (!eventsResponse.ok) {
           throw new Error(`Failed to fetch events: ${eventsResponse.statusText}`);
         }
