@@ -37,7 +37,7 @@ export const EventsPage = () => {
     async function fetchData() {
       try {
         // Fetch categories
-        const categoriesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
+        const categoriesResponse = await fetch(`${import.meta.env.VITE_API_URL}/categories`);
         if (!categoriesResponse.ok) {
           throw new Error(`Failed to fetch categories: ${categoriesResponse.statusText}`);
         }
@@ -56,7 +56,7 @@ export const EventsPage = () => {
         }
 
         // Fetch events
-        const eventsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events`);
+        const eventsResponse = await fetch(`${import.meta.env.VITE_API_URL}/events`);
         if (!eventsResponse.ok) {
           throw new Error(`Failed to fetch events: ${eventsResponse.statusText}`);
         }
@@ -152,7 +152,7 @@ export const EventsPage = () => {
       const token = localStorage.getItem('token');
 
       if (isEdit) {
-        response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events/${currentEventId}`, {
+        response = await fetch(`${import.meta.env.VITE_API_URL}/events/${currentEventId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -175,7 +175,7 @@ export const EventsPage = () => {
           isClosable: true,
         });
       } else {
-        response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/events`, {
+        response = await fetch(`${import.meta.env.VITE_API_URL}/events`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
