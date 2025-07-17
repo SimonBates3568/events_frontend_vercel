@@ -4,7 +4,7 @@
   "installCommand": "cd frontend && npm ci",
   "outputDirectory": "frontend/dist",
   "env": {
-    "VITE_API_URL": "@vite-api-url"
+    "VITE_API_URL": "https://events-api-sqlite.onrender.com"
   },
   "rewrites": [
     {
